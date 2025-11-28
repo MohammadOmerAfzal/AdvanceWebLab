@@ -1,22 +1,29 @@
+// app/layout.tsx
 import './globals.css'
-import React from 'react'
+import CartButton from'../components/CartIcon'
 
-
-export const metadata = {
-title: 'Server Actions Shop',
-description: 'Minimal shop built with Next.js Server Actions'
-}
-
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-return (
-<html lang="en">
-<body>
-<header style={{ padding: 20, borderBottom: '1px solid #eee' }}>
-<h1>Server-Actions Shop</h1>
-</header>
-<main style={{ padding: 20 }}>{children}</main>
-</body>
-</html>
-)
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <header className="bg-white shadow-sm border-b">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" className="text-xl font-bold">
+              My Store
+            </a>
+            <nav className="flex items-center space-x-4">
+              <a href="/" className="text-gray-700 hover:text-black">Home</a>
+              <a href="/products" className="text-gray-700 hover:text-black">Products</a>
+              <CartButton />
+            </nav>
+          </div>
+        </header>
+        <main>{children}</main>
+      </body>
+    </html>
+  )
 }
