@@ -1,6 +1,6 @@
 // app/layout.tsx
 import './globals.css'
-import CartButton from'../components/CartIcon'
+import CartButton from '../components/CartIcon' // Fixed import path
 import Link from 'next/link'
 
 export default function RootLayout({
