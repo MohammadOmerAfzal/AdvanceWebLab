@@ -1,10 +1,17 @@
 // lib/mongodb.ts
 import { MongoClient } from 'mongodb'
 
-const uri = process.env.DATABASE_URL || 'mongodb://localhost:27017/mynextapp'
-const options = {}
+// CORRECTED connection string - remove angle brackets and add database name
+const uri = process.env.DATABASE_URL || 'mongodb+srv://momarafzal12_db_user:Minion%24123@cluster0.xsi0bhz.mongodb.net/mynextapp?retryWrites=true&w=majority'
 
-let client
+const options = {
+  // Add connection options for better reliability
+  maxPoolSize: 10,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+}
+
+let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
 if (process.env.NODE_ENV === 'development') {
